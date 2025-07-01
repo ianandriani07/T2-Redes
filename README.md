@@ -1,9 +1,8 @@
-
 # Semana 2 – Implementação Básica e Experimentos
 
 ## Visão Geral
 
-Este repositório contém o controlador `` escrito em Python usando o framework **Ryu 4.34**.  O script implementa um **switch de camada 2** com aprendizado automático de endereços MAC, encaminhamento direto quando o destino é conhecido, flood quando ainda não é, e instalação de regras de fluxo para evitar que pacotes futuros precisem voltar ao controlador.
+Este repositório contém o controlador \`\` escrito em Python usando o framework **Ryu 4.34**.  O script implementa um **switch de camada 2** com aprendizado automático de endereços MAC, encaminhamento direto quando o destino é conhecido, flood quando ainda não é, e instalação de regras de fluxo para evitar que pacotes futuros precisem voltar ao controlador.
 
 > **Entrega exigida na Semana 2:**\
 > ▸ Script do controlador  ▸ Testes de conectividade  ▸ Experimentação de roteamento IP básico
@@ -61,7 +60,11 @@ pip install -r requirements.txt   # já contém ryu 4.34 e dependências
    ```mininet
    mininet> h1 ping -c 3 10.0.0.2
    ```
-   A resposta comprova que pacotes IP são encaminhados corretamente através do switch L2.
+   Saída esperada:
+   ```
+   3 packets transmitted, 3 received, 0% packet loss
+   ```
+   Esse teste comprova que o tráfego IP encapsulado em quadros Ethernet foi corretamente encaminhado pelo switch L2, operando com base no aprendizado de endereços MAC feito dinamicamente pelo controlador Ryu.
 
 ---
 
@@ -111,8 +114,8 @@ ryu-manager switch_l2.py > switch_l2.log 2>&1
 
 ## Referências
 
-- [Ryu Book – Switching Hub](https://osrg.github.io/ryu-book/en/html/switching_hub.html)  
+- [Ryu Book – Switching Hub](https://osrg.github.io/ryu-book/en/html/switching_hub.html)\
   Explica o funcionamento básico de um switch L2 no Ryu, incluindo aprendizado de MAC e comportamento de flood.
 
-- [Exemplo oficial no GitHub – simple_switch_13.py](https://github.com/faucetsdn/ryu/blob/master/ryu/app/simple_switch_13.py)  
+- [Exemplo oficial no GitHub – simple\_switch\_13.py](https://github.com/faucetsdn/ryu/blob/master/ryu/app/simple_switch_13.py)\
   Código referência da própria equipe do Ryu para implementação de switch com aprendizado L2.
