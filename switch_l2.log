@@ -1,0 +1,13 @@
+loading app switch_l2.py
+loading app ryu.controller.ofp_handler
+instantiating app switch_l2.py of SwitchL2
+instantiating app ryu.controller.ofp_handler of OFPHandler
+Pacote recevido: src=00:00:00:00:00:01, dst=ff:ff:ff:ff:ff:ff, porta de entrada=1
+Pacote recevido: src=00:00:00:00:00:02, dst=00:00:00:00:00:01, porta de entrada=2
+Pacote recevido: src=00:00:00:00:00:01, dst=00:00:00:00:00:02, porta de entrada=1
+Pacote recevido: src=00:00:00:00:00:01, dst=ff:ff:ff:ff:ff:ff, porta de entrada=1
+Pacote recevido: src=00:00:00:00:00:03, dst=00:00:00:00:00:01, porta de entrada=3
+Pacote recevido: src=00:00:00:00:00:01, dst=00:00:00:00:00:03, porta de entrada=1
+Pacote recevido: src=00:00:00:00:00:02, dst=ff:ff:ff:ff:ff:ff, porta de entrada=2
+Pacote recevido: src=00:00:00:00:00:03, dst=00:00:00:00:00:02, porta de entrada=3
+Pacote recevido: src=00:00:00:00:00:02, dst=00:00:00:00:00:03, porta de entrada=2
