@@ -1,0 +1,6 @@
+Pacote recebido: src=00:00:00:00:00:01, dst=ff:ff:ff:ff:ff:ff, porta de entrada=1
+Pacote recebido: src=00:00:00:00:00:05, dst=ff:ff:ff:ff:ff:ff, porta de entrada=5
+Pacote recebido: src=00:00:00:00:00:01, dst=00:00:00:00:00:05, porta de entrada=1
+Pacote recebido: src=00:00:00:00:00:01, dst=00:00:00:00:00:05, porta de entrada=1
+Pacote recebido: src=00:00:00:00:00:05, dst=00:00:00:00:00:01, porta de entrada=5
+Pacote recebido: src=00:00:00:00:00:05, dst=00:00:00:00:00:01, porta de entrada=5

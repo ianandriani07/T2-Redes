@@ -1,0 +1,37 @@
+PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
+64 bytes from 10.0.0.10: icmp_seq=1 ttl=64 time=0.340 ms
+64 bytes from 10.0.0.10: icmp_seq=2 ttl=64 time=0.121 ms
+64 bytes from 10.0.0.10: icmp_seq=3 ttl=64 time=0.188 ms
+64 bytes from 10.0.0.10: icmp_seq=4 ttl=64 time=0.144 ms
+64 bytes from 10.0.0.10: icmp_seq=5 ttl=64 time=0.142 ms
+64 bytes from 10.0.0.10: icmp_seq=6 ttl=64 time=0.141 ms
+64 bytes from 10.0.0.10: icmp_seq=7 ttl=64 time=0.143 ms
+64 bytes from 10.0.0.10: icmp_seq=8 ttl=64 time=0.117 ms
+64 bytes from 10.0.0.10: icmp_seq=9 ttl=64 time=0.135 ms
+64 bytes from 10.0.0.10: icmp_seq=10 ttl=64 time=0.069 ms
+64 bytes from 10.0.0.10: icmp_seq=11 ttl=64 time=0.133 ms
+64 bytes from 10.0.0.10: icmp_seq=12 ttl=64 time=0.136 ms
+64 bytes from 10.0.0.10: icmp_seq=13 ttl=64 time=0.118 ms
+64 bytes from 10.0.0.10: icmp_seq=14 ttl=64 time=0.120 ms
+64 bytes from 10.0.0.10: icmp_seq=15 ttl=64 time=0.081 ms
+64 bytes from 10.0.0.10: icmp_seq=16 ttl=64 time=0.080 ms
+64 bytes from 10.0.0.10: icmp_seq=17 ttl=64 time=0.177 ms
+64 bytes from 10.0.0.10: icmp_seq=18 ttl=64 time=0.051 ms
+64 bytes from 10.0.0.10: icmp_seq=19 ttl=64 time=0.118 ms
+64 bytes from 10.0.0.10: icmp_seq=20 ttl=64 time=0.115 ms
+64 bytes from 10.0.0.10: icmp_seq=21 ttl=64 time=0.141 ms
+64 bytes from 10.0.0.10: icmp_seq=22 ttl=64 time=0.082 ms
+64 bytes from 10.0.0.10: icmp_seq=23 ttl=64 time=0.137 ms
+64 bytes from 10.0.0.10: icmp_seq=24 ttl=64 time=0.120 ms
+64 bytes from 10.0.0.10: icmp_seq=25 ttl=64 time=0.139 ms
+64 bytes from 10.0.0.10: icmp_seq=26 ttl=64 time=0.105 ms
+64 bytes from 10.0.0.10: icmp_seq=27 ttl=64 time=0.140 ms
+64 bytes from 10.0.0.10: icmp_seq=28 ttl=64 time=0.132 ms
+64 bytes from 10.0.0.10: icmp_seq=29 ttl=64 time=0.120 ms
+64 bytes from 10.0.0.10: icmp_seq=30 ttl=64 time=0.121 ms
+64 bytes from 10.0.0.10: icmp_seq=31 ttl=64 time=0.145 ms
+64 bytes from 10.0.0.10: icmp_seq=32 ttl=64 time=0.128 ms
+
+--- 10.0.0.10 ping statistics ---
+32 packets transmitted, 32 received, 0% packet loss, time 31721ms
+rtt min/avg/max/mdev = 0.051/0.130/0.340/0.046 ms
