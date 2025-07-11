@@ -167,7 +167,7 @@ semana3/
 
 ## Execução Passo a Passo
 
-1. **Inicie o controlador:**
+1. **Inicie o controlador:** (lembre-se de estar com ambiente virtual ativo)
 
    ```bash
    ryu-manager code/balanceador_carga.py
@@ -197,7 +197,7 @@ semana3/
 
 ---
 
-## Como o Código Funciona (Resumo)
+## Como o Código Funciona  
 
 1. **Intercepta ARP:** quando um host tenta resolver o IP `10.0.0.10`, o controlador responde com o MAC de `h5` ou `h6`, alternando a cada nova requisição.
 
