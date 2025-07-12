@@ -133,13 +133,9 @@ Nessa segunda etapa o foco passou a ser o balanceamento de carga. A ideia foi si
 semana3/
 ├── code/
 │   ├── balanceador_carga.py     # Controlador SDN com balanceamento
-├── results/
-│   ├── controller_logs.txt      # Logs do Ryu com redirecionamento ativo
-│   └── ping_logs_h1_h2.txt      # Testes de ping via IP virtual
-├── examples/
-│   └── exemplos_comandos.txt    # Comandos úteis de execução
-└── docs/
-    └── guia_usuario.md          # Documentação técnica e teórica
+└── results/
+    ├── controller_logs.txt      # Logs do Ryu com redirecionamento ativo
+    └── ping_logs_h1_h2.txt      # Testes de ping via IP virtual
 ```
 
 ---
