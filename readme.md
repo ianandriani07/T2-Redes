@@ -1,8 +1,14 @@
+# Descrição Geral 
+
+Este projeto faz parte da disciplina de Redes de Computadores e tem como foco a aplicação de conceitos de Redes Definidas por Software (SDN), utilizando o controlador Ryu e o simulador Mininet. Durante duas semanas foram desenvolvidos dois sistemas distintos: um switch de camada 2 com aprendizado automático de endereços MAC e um balanceador de carga baseado em técnicas de ARP spoofing e NAT.
+
+---
+
 # Semana 2 – Implementação Básica e Experimentos
 
 ## Visão Geral
 
-Este repositório contém o controlador \`\` escrito em Python usando o framework **Ryu 4.34**.  O script implementa um **switch de camada 2** com aprendizado automático de endereços MAC, encaminhamento direto quando o destino é conhecido, flood quando ainda não é, e instalação de regras de fluxo para evitar que pacotes futuros precisem voltar ao controlador.
+Nessa primeira etapa, o objetivo foi criar um controlador que atua como um switch inteligente. Sempre que um pacote chega ao switch e seu destino ainda não é conhecido o controlador envia o pacote para todas as portas. Enquanto isso, ele aprende automaticamente os endereços MAC de origem e associa cada um à porta por onde o pacote entrou. Com isso, nos próximos envios, ele sabe exatamente para onde encaminhar os pacotes, tornando o processo mais rápido e eficiente.
 
 > **Entrega exigida na Semana 2:**\
 > ▸ Script do controlador  ▸ Testes de conectividade  ▸ Experimentação de roteamento IP básico
@@ -13,14 +19,15 @@ Este repositório contém o controlador \`\` escrito em Python usando o framewor
 
 ```
 semana2/
-├── switch_l2.py          # Controlador L2 com aprendizado de MAC
-├── switch_l2.log         # (Gerado em tempo de execução) logs detalhados
-└── README.md             # Este arquivo
+├── code/
+│   ├── switch_l2.py # Controlador L2 com aprendizado de
+└── results/
+    └── switch_l2.log # (Gerado em tempo de execução) logs detalhados
 ```
 
 ---
 
-## Pré ‑requisitos
+## Configurando o ambiente
 
 | Componente   | Versão mínima | Observação                            |
 | ------------ | ------------- | ------------------------------------- |
@@ -39,7 +46,7 @@ pip install -r requirements.txt   # já contém ryu 4.34 e dependências
 
 ---
 
-## Execução Passo a Passo
+## Como Executar o Projeto (Passo a Passo)
 
 1. **Inicie o controlador** (gera `switch_l2.log` automaticamente):
    ```bash
@@ -64,7 +71,8 @@ pip install -r requirements.txt   # já contém ryu 4.34 e dependências
    ```
    3 packets transmitted, 3 received, 0% packet loss
    ```
-   Esse teste comprova que o tráfego IP encapsulado em quadros Ethernet foi corretamente encaminhado pelo switch L2, operando com base no aprendizado de endereços MAC feito dinamicamente pelo controlador Ryu.
+> [!NOTE]
+> Esse teste comprova que o tráfego IP encapsulado em quadros Ethernet foi corretamente encaminhado pelo switch L2, operando com base no aprendizado de endereços MAC feito dinamicamente pelo controlador Ryu.
 
 ---
 
@@ -78,6 +86,9 @@ pip install -r requirements.txt   # já contém ryu 4.34 e dependências
 ```
 
 Essas entradas mostram o aprendizado de MAC e o direcionamento correto dos quadros.
+
+
+Na primeira linha, o computador com endereço MAC 00:00:00:00:00:01 envia um pacote para todo mundo porque ainda não conhece o destino. Na segunda linha, o computador 00:00:00:00:00:02 tenta se comunicar diretamente com o 00:00:00:00:00:01. Como o controlador já aprendeu em qual porta o destinatário está, ele encaminha a mensagem de forma direta. Por fim, 00:00:00:00:00:01 responde a 00:00:00:00:00:02, e novamente ele envia o pacote diretamente.
 
 ---
 
@@ -105,30 +116,11 @@ Se preferir, redirecione todo o stdout para arquivo:
 ```bash
 ryu-manager switch_l2.py > switch_l2.log 2>&1
 ```
-
----
-
-**Autores:** Alice Motin, Caroline Lanzuolo Yamaguchi, Fábio Marcon Siqueira e Ian Andriani Gonçalves – Engenharia de Computação/UFSC – Redes de Computadores
-
----
-
-## Referências
-
-- [Ryu Book – Switching Hub](https://osrg.github.io/ryu-book/en/html/switching_hub.html)\
-  Explica o funcionamento básico de um switch L2 no Ryu, incluindo aprendizado de MAC e comportamento de flood.
-
-- [Exemplo oficial no GitHub – simple\_switch\_13.py](https://github.com/faucetsdn/ryu/blob/master/ryu/app/simple_switch_13.py)\
-  Código referência da própria equipe do Ryu para implementação de switch com aprendizado L2.
-
 ---
 
 # Semana 3 – Balanceador de Carga SDN
 
-## Visão Geral
-
-Este projeto implementa um **balanceador de carga baseado em ARP spoofing e NAT** utilizando o controlador SDN **Ryu 4.34** com OpenFlow 1.3. O IP virtual `10.0.0.10` é usado para representar um serviço fictício, cujo tráfego é redirecionado de forma transparente para os servidores reais `h5` e `h6`, conectados ao switch nas portas 5 e 6.
-
-O balanceamento ocorre no momento da resolução ARP, alternando entre os dois servidores com uma política de round-robin.
+Nessa segunda etapa o foco passou a ser o balanceamento de carga. A ideia foi simular um IP virtual (10.0.0.10) que representa um único serviço, mas na verdade esse IP é atendido por dois servidores reais (os hosts h5 e h6). Quando um cliente da rede tenta se comunicar com esse IP, o controlador intercepta a requisição ARP e responde com o MAC de um dos servidores, alternando entre eles com uma política simples de round-robin. Assim, o tráfego dos clientes é distribuído entre os dois servidores, mesmo que pareça que todos estão se comunicando com o mesmo destino. O projeto também instala regras de NAT para que os pacotes sejam redirecionados de forma transparente, sem quebra de comunicação.
 
 > **Entrega exigida na Semana 3:**\
 > ▸ Controlador funcional com balanceamento de carga\
@@ -154,7 +146,7 @@ semana3/
 
 ---
 
-## Pré ‑requisitos
+## Configurando o ambiente
 
 | Componente   | Versão mínima | Observação                            |
 | ------------ | ------------- | ------------------------------------- |
@@ -165,7 +157,7 @@ semana3/
 
 ---
 
-## Execução Passo a Passo
+## Como Executar o Projeto (Passo a Passo)
 
 1. **Inicie o controlador:** (lembre-se de estar com ambiente virtual ativo)
 
@@ -197,7 +189,7 @@ semana3/
 
 ---
 
-## Como o Código Funciona  
+## Como o Código Funciona (Resumo)
 
 1. **Intercepta ARP:** quando um host tenta resolver o IP `10.0.0.10`, o controlador responde com o MAC de `h5` ou `h6`, alternando a cada nova requisição.
 
@@ -269,3 +261,16 @@ results/ping_logs_h1_h2.txt
 - Implementar um dashboard para monitorar o servidor ativo.
 - Adicionar lógica de balanceamento por carga real (ex: round-robin, least connections, etc).
 
+---
+
+## Referências
+
+- [Ryu Book – Switching Hub](https://osrg.github.io/ryu-book/en/html/switching_hub.html)\
+  Explica o funcionamento básico de um switch L2 no Ryu, incluindo aprendizado de MAC e comportamento de flood.
+
+- [Exemplo oficial no GitHub – simple\_switch\_13.py](https://github.com/faucetsdn/ryu/blob/master/ryu/app/simple_switch_13.py)\
+  Código referência da própria equipe do Ryu para implementação de switch com aprendizado L2.
+
+## **Autores** 
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/112569754?v=4" width=115><br><sub>Alice Motin</sub>](https://github.com/AliceMotin) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/147776134?v=4" width=115><br><sub>Caroline Lanzuolo</sub>](https://github.com/carol-lanzu) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/127808270?v=4" width=115><br><sub>Fabio Siqueira</sub>](https://github.com/Fabioomega) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/122290431?v=4" width=115><br><sub>Ian Andriani</sub>](https://github.com/ianandriani07) | 
+| :---: | :---: | :---: | :---: |
