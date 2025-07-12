@@ -6,8 +6,6 @@ Este projeto faz parte da disciplina de Redes de Computadores e tem como foco a 
 
 # Semana 2 – Implementação Básica e Experimentos
 
-## Visão Geral
-
 Nessa primeira etapa, o objetivo foi criar um controlador que atua como um switch inteligente. Sempre que um pacote chega ao switch e seu destino ainda não é conhecido o controlador envia o pacote para todas as portas. Enquanto isso, ele aprende automaticamente os endereços MAC de origem e associa cada um à porta por onde o pacote entrou. Com isso, nos próximos envios, ele sabe exatamente para onde encaminhar os pacotes, tornando o processo mais rápido e eficiente.
 
 > **Entrega exigida na Semana 2:**\
